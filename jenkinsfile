@@ -1,0 +1,27 @@
+pipeline {
+    agent any 
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git 'git@github.com:fauzirobani/myrepo-project.git' // Ganti dengan URL repo Anda
+            }
+        }
+        stage('Build') {
+            steps {
+                sh './jenkinsfile build.sh' // Ganti dengan script build Anda
+            }
+        }
+    }
+    post {
+        success {
+            mail to: 'email@example.com',
+                 subject: "Build Successful: ${currentBuild.fullDisplayName}",
+                 body: "The build was successful! Check it out here: ${env.BUILD_URL}"
+        }
+        failure {
+            mail to: 'email@example.com',
+                 subject: "Build Failed: ${currentBuild.fullDisplayName}",
+                 body: "The build has failed! Check the logs here: ${env.BUILD_URL}"
+        }
+    }
+}
