@@ -14,12 +14,12 @@ pipeline {
     }
     post {
         success {
-            mail to: 'email@example.com',
+            mail to: 'fauzirobani23@gmail.com',
                  subject: "Build Successful: ${currentBuild.fullDisplayName}",
                  body: "The build was successful! Check it out here: ${env.BUILD_URL}"
         }
         failure {
-            mail to: 'email@example.com',
+            mail to: 'fauzyrobani23@gmail.com',
                  subject: "Build Failed: ${currentBuild.fullDisplayName}",
                  body: "The build has failed! Check the logs here: ${env.BUILD_URL}"
         }
