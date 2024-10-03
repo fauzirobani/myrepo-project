@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'git@github.com:fauzirobani/myrepo-project.git' // Ganti dengan URL repo Anda
+                git 'https://github.com/fauzirobani/myrepo-project.git' // Ganti dengan URL repo Anda
             }
         }
         stage('Build') {
@@ -14,7 +14,7 @@ pipeline {
     }
     post {
         success {
-            mail to: 'fauzirobani23@gmail.com',
+            mail to: 'fauzyrobani23@gmail.com',
                  subject: "Build Successful: ${currentBuild.fullDisplayName}",
                  body: "The build was successful! Check it out here: ${env.BUILD_URL}"
         }
